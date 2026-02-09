@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="1.css">
+<meta charset="UTF-8">
+<title>Todo List</title>
+
+</head>
+
+<body>
+
+<div class="container">
+<h1>ToDo List</h1>
+
+<div class="top">
+<input id="input" placeholder="New Task">
+<button id="add">Add</button>
+</div>
+<ul id="list"></ul>
+</div>
+
+<script>
+const input = document.getElementById("input");
+const add = document.getElementById("add");
+const list = document.getElementById("list");
+
+add.addEventListener("click", () => {
+
+  if(input.value === "") return;
+
+  const li = document.createElement("li");
+  const check = document.createElement("input");
+  const span = document.createElement("span");
+  const del = document.createElement("span");
+
+  check.type = "checkbox";
+  span.textContent = input.value;
+  span.className = "task";
+  del.textContent = "🗑";
+  del.className = "delete";
+
+  check.addEventListener("change", () => {
+    span.classList.toggle("done");
+  });
+
+  del.addEventListener("click", () => {
+    list.removeChild(li);
+  });
+
+  li.appendChild(check);
+  li.appendChild(span);
+  li.appendChild(del);
+
+  list.appendChild(li);
+
+  input.value = "";
+});
+</script>
+
+</body>
+</html>
