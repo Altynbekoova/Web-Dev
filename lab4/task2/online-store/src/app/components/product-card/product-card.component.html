@@ -1,0 +1,29 @@
+<div class="card">
+
+  <img class="main-img" [src]="currentImage" />
+
+  <div class="thumbs">
+    <img
+      *ngFor="let img of product.images"
+      [src]="img"
+      (click)="changeImage(img)">
+  </div>
+
+  <h3>{{ product.name }}</h3>
+  <p>{{ product.description }}</p>
+
+  <div class="price">{{ product.price | number }} ₸</div>
+
+  <div class="rating">
+    <span *ngFor="let s of stars()">⭐</span>
+    <span>{{ product.rating }}</span>
+  </div>
+
+  <a [href]="product.link" target="_blank">Open in Kaspi</a>
+
+  <div class="share">
+    <a [href]="getWhatsAppLink()" target="_blank">WhatsApp</a>
+    <a [href]="getTelegramLink()" target="_blank">Telegram</a>
+  </div>
+
+</div>
