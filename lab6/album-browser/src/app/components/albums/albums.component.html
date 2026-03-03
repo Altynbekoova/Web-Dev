@@ -1,0 +1,13 @@
+<div class="albums-container">
+    <h1>Albums</h1>
+    
+    <div class="albums-grid">
+      <div *ngFor="let album of albums$ | async" class="album-card">
+        <div class="album-info" (click)="goToAlbumDetail(album.id)">
+          <span class="album-id">#{{ album.id }}</span>
+          <h3 class="album-title">{{ album.title }}</h3>
+        </div>
+        <button class="delete-btn" (click)="deleteAlbum(album.id)">Delete</button>
+      </div>
+    </div>
+  </div>
